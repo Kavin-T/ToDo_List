@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ToDo</title>
+    <style>
+        body{
+            background-color: aliceblue;
+        }
+        .list,.taskList{
+            display: flex;
+            flex-direction: column;
+            margin-left: 600px;
+        }
+        .addTask{
+            display: flex;
+            flex-direction: row;
+        }
+        #taskInput{
+            margin: 10px;
+        }
+        .addTask button{
+            margin: 10px;
+        }
+        .task{
+            width: 90px;
+        }
+    </style>
+</head>
+<body>
+    <div class="list">
+        <div style="font-size: 30px;margin-left: 20px;">To Do List</div>
+        <div class="addTask">
+            <div>
+                <form>
+                    <input type="text" name="taskInput" id="taskInput" autofocus>
+                </form>
+            </div>
+            <div>
+                <button onclick="add()">Add</button>
+            </div>
+        </div>
+        <div id="taskList">
+        </div>
+    </div>
+    <script>
+        let no_of_tasks=1;
+        function add(){
+            let taskList=document.getElementById("taskList");
+            let task=document.getElementById("taskInput");
+            no_of_tasks++;
+            let newTask = document.createElement("div");
+            newTask.textContent = task.value;
+            newTask.id = "task" + no_of_tasks;
+            taskList.appendChild(newTask);
+            newTask.addEventListener("click", (event) => {
+                event.target.style.textDecoration="line-through";
+            }, false);
+        }
+    </script>
+</body>
+</html>
